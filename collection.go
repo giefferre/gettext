@@ -37,9 +37,7 @@ func (c *Collection) LoadDirectory(path string) error {
 	for _, fileName := range files {
 		language := strings.ToLower(fmt.Sprintf(strings.TrimSuffix(filepath.Base(fileName), filepath.Ext(fileName))))
 
-		filePath := fmt.Sprintf("%s", fileName)
-		fmt.Println(language, "->", filePath)
-		fileBytes, err := ioutil.ReadFile(filePath)
+		fileBytes, err := ioutil.ReadFile(fileName)
 		if err != nil {
 			return err
 		}
