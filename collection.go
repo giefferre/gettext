@@ -35,9 +35,10 @@ func (c *Collection) LoadDirectory(path string) error {
 	c.catalogs = make(map[string]*Catalog, 0)
 
 	for _, fileName := range files {
-		language := strings.ToLower(fmt.Sprintf(strings.TrimSuffix(fileName, filepath.Ext(fileName))))
+		language := strings.ToLower(fmt.Sprintf(strings.TrimSuffix(filepath.Base(fileName), filepath.Ext(fileName))))
 
-		filePath := fmt.Sprintf("%s%s%s", path, string(os.PathSeparator), fileName)
+		filePath := fmt.Sprintf("%s", fileName)
+		fmt.Println(language, "->", filePath)
 		fileBytes, err := ioutil.ReadFile(filePath)
 		if err != nil {
 			return err
